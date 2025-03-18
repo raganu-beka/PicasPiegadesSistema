@@ -30,6 +30,24 @@ namespace PicasPiegadesSistema
                         Password TEXT NOT NULL
                     ) 
                 ";
+
+                createTableCommand.ExecuteNonQuery();
+            }
+        }
+
+        public void CreateUser(string username, string password)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                var createUserCommand = connection.CreateCommand();
+                createUserCommand.CommandText = @"
+                    INSERT INTO Users(Username, Password)
+                    VALUES (@username, @password)
+                ";
+
+
             }
         }
     }
