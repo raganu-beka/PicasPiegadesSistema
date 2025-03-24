@@ -48,6 +48,11 @@ namespace PicasPiegadesSistema
                     INSERT INTO Users(Username, Password)
                     VALUES (@username, @password)
                 ";
+
+                createUserCommand.Parameters.AddWithValue("username", username);
+                createUserCommand.Parameters.AddWithValue("password", password);
+
+                createUserCommand.ExecuteNonQuery();
             }
         }
 
