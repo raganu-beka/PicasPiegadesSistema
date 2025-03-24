@@ -16,6 +16,8 @@ namespace PicasPiegadesSistema
         public UserDb(string connectionString)
         {
             this.connectionString = connectionString;
+
+            CreateUserTable();
         }
 
         public void CreateUserTable()

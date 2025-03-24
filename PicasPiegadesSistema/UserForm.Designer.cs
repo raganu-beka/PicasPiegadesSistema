@@ -57,7 +57,6 @@
             label1.Size = new Size(74, 15);
             label1.TabIndex = 2;
             label1.Text = "Lietotājvārds";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -76,6 +75,7 @@
             loginBtn.TabIndex = 4;
             loginBtn.Text = "Pieslēgties!";
             loginBtn.UseVisualStyleBackColor = true;
+            loginBtn.Click += loginBtn_Click;
             // 
             // UserForm
             // 
