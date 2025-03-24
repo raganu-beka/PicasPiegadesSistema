@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PicasPiegadesSistema
 {
-    public partial class UserForm: Form
+    public partial class UserForm : Form
     {
         public UserForm()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
