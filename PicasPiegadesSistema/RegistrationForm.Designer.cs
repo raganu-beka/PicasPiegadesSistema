@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            unameTxt = new TextBox();
+            passTxt = new TextBox();
+            pass2Txt = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             SuspendLayout();
             // 
-            // textBox1
+            // unameTxt
             // 
-            textBox1.Location = new Point(21, 48);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(296, 23);
-            textBox1.TabIndex = 0;
+            unameTxt.Location = new Point(21, 48);
+            unameTxt.Name = "unameTxt";
+            unameTxt.Size = new Size(296, 23);
+            unameTxt.TabIndex = 0;
             // 
-            // textBox2
+            // passTxt
             // 
-            textBox2.Location = new Point(21, 108);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(296, 23);
-            textBox2.TabIndex = 1;
+            passTxt.Location = new Point(21, 108);
+            passTxt.Name = "passTxt";
+            passTxt.Size = new Size(296, 23);
+            passTxt.TabIndex = 1;
             // 
-            // textBox3
+            // pass2Txt
             // 
-            textBox3.Location = new Point(21, 164);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(296, 23);
-            textBox3.TabIndex = 2;
+            pass2Txt.Location = new Point(21, 164);
+            pass2Txt.Name = "pass2Txt";
+            pass2Txt.Size = new Size(296, 23);
+            pass2Txt.TabIndex = 2;
             // 
             // label1
             // 
@@ -92,9 +92,9 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(pass2Txt);
+            Controls.Add(passTxt);
+            Controls.Add(unameTxt);
             Name = "RegistrationForm";
             Text = "RegistrationForm";
             ResumeLayout(false);
@@ -103,9 +103,9 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox unameTxt;
+        private TextBox passTxt;
+        private TextBox pass2Txt;
         private Label label1;
         private Label label2;
         private Label label3;
