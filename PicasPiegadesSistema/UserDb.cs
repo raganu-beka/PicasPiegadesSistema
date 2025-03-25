@@ -31,7 +31,8 @@ namespace PicasPiegadesSistema
                     CREATE TABLE IF NOT EXISTS Users (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Username TEXT NOT NULL UNIQUE,
-                        Password TEXT NOT NULL
+                        Password TEXT NOT NULL,
+                        IsAdmin BOOLEAN
                     ) 
                 ";
 
@@ -39,7 +40,7 @@ namespace PicasPiegadesSistema
             }
         }
 
-        public void CreateUser(string username, string password)
+        public void CreateUser(string username, string password, bool isAdmin)
         {
             using (var connection = new SqliteConnection(connectionString))
             {
@@ -47,18 +48,19 @@ namespace PicasPiegadesSistema
 
                 var createUserCommand = connection.CreateCommand();
                 createUserCommand.CommandText = @"
-                    INSERT INTO Users(Username, Password)
-                    VALUES (@username, @password)
+                    INSERT INTO Users(Username, Password, IsAdmin)
+                    VALUES (@username, @password, @isAdmin)
                 ";
 
                 createUserCommand.Parameters.AddWithValue("username", username);
                 createUserCommand.Parameters.AddWithValue("password", password);
+                createUserCommand.Parameters.AddWithValue("isAdmin", isAdmin);
 
                 createUserCommand.ExecuteNonQuery();
             }
         }
 
-        public (string, string) GetUser(string username)
+        public (string, string, bool) GetUser(string username)
         {
             using (var connection = new SqliteConnection(connectionString))
             {
@@ -66,7 +68,7 @@ namespace PicasPiegadesSistema
 
                 var selectUserCommand = connection.CreateCommand();
                 selectUserCommand.CommandText = @"
-                    SELECT Username, Password FROM Users
+                    SELECT Username, Password, IsAdmin FROM Users
                     WHERE Username = @username
                 ";
                 selectUserCommand.Parameters.AddWithValue("username", username);
@@ -75,7 +77,7 @@ namespace PicasPiegadesSistema
                 {
                     while (reader.Read())
                     {
-                        return (reader["Username"].ToString(), reader["Password"].ToString());
+                        return (reader["Username"].ToString(), reader["Password"].ToString(), Convert.ToBoolean(reader["IsAdmin"]));
                     }
                 }
 

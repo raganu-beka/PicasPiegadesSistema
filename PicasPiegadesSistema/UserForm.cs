@@ -18,12 +18,13 @@ namespace PicasPiegadesSistema
         {
             InitializeComponent();
 
-            _userDb = new UserDb("Data Source=pica.db");
+            _userDb = new UserDb("Data Source=pizza.db");
 
             try
             {
                 _userDb.CreateUser("raganubeka",
-                        Hashing.GeneratePasswordHash("123"));
+                        Hashing.GeneratePasswordHash("123"),
+                        true);
             }
             catch (Exception e)
             {
@@ -35,7 +36,7 @@ namespace PicasPiegadesSistema
             var username = unameTxt.Text;
             var password = passTxt.Text;
 
-            (string username, string password) user;
+            (string username, string password, bool isAdmin) user;
             try
             {
                 user = _userDb.GetUser(username);

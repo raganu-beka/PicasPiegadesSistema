@@ -19,7 +19,7 @@ namespace PicasPiegadesSistema
         {
             InitializeComponent();
 
-            _userDb = new UserDb("Data Source=pica.db");
+            _userDb = new UserDb("Data Source=pizza.db");
         }
 
         private void registerBtn_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace PicasPiegadesSistema
 
             try
             {
-                _userDb.CreateUser(username, password);
+                _userDb.CreateUser(username, password, false);
             }
             catch (SqliteException ex)
             {
