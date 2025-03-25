@@ -34,6 +34,7 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            registerBtn = new Button();
             SuspendLayout();
             // 
             // unameTxt
@@ -84,11 +85,22 @@
             label3.TabIndex = 5;
             label3.Text = "Ievadīt paroli atkārtoti";
             // 
+            // registerBtn
+            // 
+            registerBtn.Location = new Point(21, 206);
+            registerBtn.Name = "registerBtn";
+            registerBtn.Size = new Size(75, 23);
+            registerBtn.TabIndex = 6;
+            registerBtn.Text = "Reģistrēties";
+            registerBtn.UseVisualStyleBackColor = true;
+            registerBtn.Click += registerBtn_Click;
+            // 
             // RegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(346, 450);
+            Controls.Add(registerBtn);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -109,5 +121,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Button registerBtn;
     }
 }
