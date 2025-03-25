@@ -48,6 +48,7 @@
             // 
             passTxt.Location = new Point(21, 108);
             passTxt.Name = "passTxt";
+            passTxt.PasswordChar = '*';
             passTxt.Size = new Size(296, 23);
             passTxt.TabIndex = 1;
             // 
@@ -55,6 +56,7 @@
             // 
             pass2Txt.Location = new Point(21, 164);
             pass2Txt.Name = "pass2Txt";
+            pass2Txt.PasswordChar = '*';
             pass2Txt.Size = new Size(296, 23);
             pass2Txt.TabIndex = 2;
             // 
