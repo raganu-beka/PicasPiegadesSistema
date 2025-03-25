@@ -39,7 +39,7 @@ namespace PicasPiegadesSistema
             try
             {
                 user = _userDb.GetUser(username);
-            } 
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -54,6 +54,18 @@ namespace PicasPiegadesSistema
             {
                 MessageBox.Show("Invalid credentials");
             }
+        }
+
+        private void passTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void registerBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegistrationForm registerForm = new RegistrationForm();
+            registerForm.Show();
         }
     }
 }

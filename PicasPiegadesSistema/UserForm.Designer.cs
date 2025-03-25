@@ -33,6 +33,7 @@
             label1 = new Label();
             label2 = new Label();
             loginBtn = new Button();
+            registerBtn = new Button();
             SuspendLayout();
             // 
             // unameTxt
@@ -46,8 +47,11 @@
             // 
             passTxt.Location = new Point(45, 113);
             passTxt.Name = "passTxt";
+            passTxt.PasswordChar = '*';
             passTxt.Size = new Size(296, 23);
             passTxt.TabIndex = 1;
+            passTxt.UseWaitCursor = true;
+            passTxt.TextChanged += passTxt_TextChanged;
             // 
             // label1
             // 
@@ -77,11 +81,22 @@
             loginBtn.UseVisualStyleBackColor = true;
             loginBtn.Click += loginBtn_Click;
             // 
+            // registerBtn
+            // 
+            registerBtn.Location = new Point(266, 154);
+            registerBtn.Name = "registerBtn";
+            registerBtn.Size = new Size(75, 23);
+            registerBtn.TabIndex = 5;
+            registerBtn.Text = "Reģistrēties";
+            registerBtn.UseVisualStyleBackColor = true;
+            registerBtn.Click += registerBtn_Click;
+            // 
             // UserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(391, 220);
+            Controls.Add(registerBtn);
             Controls.Add(loginBtn);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -100,5 +115,6 @@
         private Label label1;
         private Label label2;
         private Button loginBtn;
+        private Button registerBtn;
     }
 }
