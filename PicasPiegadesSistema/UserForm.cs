@@ -35,12 +35,22 @@ namespace PicasPiegadesSistema
             var username = unameTxt.Text;
             var password = passTxt.Text;
 
-            (string username, string password) user = _userDb.GetUser(username);
-            
+            (string username, string password) user;
+            try
+            {
+                user = _userDb.GetUser(username);
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
             if (Hashing.CheckPasswordHash(password, user.password))
             {
                 MessageBox.Show("Logged in");
-            } else
+            }
+            else
             {
                 MessageBox.Show("Invalid credentials");
             }
