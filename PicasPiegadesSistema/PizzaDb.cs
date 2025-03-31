@@ -31,7 +31,7 @@ namespace PicasPiegadesSistema
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Size INTEGER,
                         Price NUMBER,
-                        Description TEXT
+                        Description TEXT UNIQUE
                     ) 
                 ";
 
@@ -49,8 +49,7 @@ namespace PicasPiegadesSistema
                 createUserCommand.CommandText = @"
                     INSERT INTO Users(Size, Price, Description)
                     VALUES (@size, @price, @description)
-                "
-                ;
+                ";
 
                 createUserCommand.Parameters.AddWithValue("size", pizza.Size);
                 createUserCommand.Parameters.AddWithValue("price", pizza.Price);
@@ -87,6 +86,22 @@ namespace PicasPiegadesSistema
             }
 
             return pizzaList;
-        } 
+        }
+        
+        public void DeletePizza(Pizza pizza)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                var deleteCmd = connection.CreateCommand();
+                deleteCmd.CommandText = @"DELETE FROM Pizza
+                    WHERE Description = @description";
+
+                deleteCmd.Parameters.AddWithValue("description", pizza.Description);
+
+                deleteCmd.ExecuteNonQuery();
+            }
+        }
     }
 }
