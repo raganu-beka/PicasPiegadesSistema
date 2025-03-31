@@ -104,6 +104,7 @@
             selectBtn.TabIndex = 7;
             selectBtn.Text = "Izvēlēties";
             selectBtn.UseVisualStyleBackColor = true;
+            selectBtn.Click += selectBtn_Click;
             // 
             // addBtn
             // 
