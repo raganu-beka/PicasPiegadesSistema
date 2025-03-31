@@ -49,6 +49,13 @@ namespace PicasPiegadesSistema
 
             if (Hashing.CheckPasswordHash(password, user.password))
             {
+                if (user.isAdmin)
+                {
+                    this.Hide();
+                    AdminForm adminForm = new AdminForm();
+                    adminForm.Show();
+                }
+
                 MessageBox.Show("Logged in");
             }
             else
