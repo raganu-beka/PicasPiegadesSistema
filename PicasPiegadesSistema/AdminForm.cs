@@ -19,6 +19,7 @@ namespace PicasPiegadesSistema
             InitializeComponent();
 
             _pizzaDb = new PizzaDb("Data Source=pizza.db");
+            UpdatePizzaComboBox();
         }
 
         private void selectBtn_Click(object sender, EventArgs e)
@@ -37,14 +38,25 @@ namespace PicasPiegadesSistema
                     Price = Convert.ToDouble(priceTxt.Text)
                 };
 
-
                 _pizzaDb.CreatePizza(pizza);
-                MessageBox.Show("Pica tika pievienota!");
+                UpdatePizzaComboBox();
+
+                MessageBox.Show("Pica tika pievienota!", "Paziņojums",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Exclamation);
 
             } catch (Exception ex)
             {
                 MessageBox.Show("Notikusi kļūda! " + ex.Message);
             }
+        }
+
+        private void UpdatePizzaComboBox()
+        {
+            var pizzas = _pizzaDb.ReadPizzas();
+            var pizzasDesc = pizzas.Select(x => x.Description).ToList();
+
+            pizzaList.DataSource = pizzasDesc;
         }
     }
 }
