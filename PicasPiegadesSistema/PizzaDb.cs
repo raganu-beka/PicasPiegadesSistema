@@ -47,7 +47,7 @@ namespace PicasPiegadesSistema
 
                 var createUserCommand = connection.CreateCommand();
                 createUserCommand.CommandText = @"
-                    INSERT INTO Users(Size, Price, Description)
+                    INSERT INTO Pizzas(Size, Price, Description)
                     VALUES (@size, @price, @description)
                 ";
 
