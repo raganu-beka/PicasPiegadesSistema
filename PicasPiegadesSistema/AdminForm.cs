@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -24,7 +25,16 @@ namespace PicasPiegadesSistema
 
         private void selectBtn_Click(object sender, EventArgs e)
         {
+            var selectedName = pizzaList.Text;
+            var pizzas = _pizzaDb.ReadPizzas();
 
+            var selectedPizza = pizzas.Find(x => x.Description == selectedName);
+            if (selectedPizza != null)
+            {
+                descTxt.Text = selectedPizza.Description;
+                priceTxt.Text = selectedPizza.Price.ToString();
+                sizeTxt.Text = selectedPizza.Size.ToString();
+            }
         }
 
         private void addBtn_Click(object sender, EventArgs e)
