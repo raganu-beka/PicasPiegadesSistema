@@ -25,5 +25,26 @@ namespace PicasPiegadesSistema
         {
 
         }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var pizza = new Pizza()
+                {
+                    Description = descTxt.Text,
+                    Size = Convert.ToInt32(sizeTxt.Text),
+                    Price = Convert.ToDouble(priceTxt.Text)
+                };
+
+
+                _pizzaDb.CreatePizza(pizza);
+                MessageBox.Show("Pica tika pievienota!");
+
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Notikusi kļūda! " + ex.Message);
+            }
+        }
     }
 }

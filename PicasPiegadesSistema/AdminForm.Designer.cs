@@ -114,6 +114,7 @@
             addBtn.TabIndex = 8;
             addBtn.Text = "Pievienot";
             addBtn.UseVisualStyleBackColor = true;
+            addBtn.Click += addBtn_Click;
             // 
             // deleteBtn
             // 
