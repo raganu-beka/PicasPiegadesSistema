@@ -39,7 +39,7 @@ namespace PicasPiegadesSistema
             }
         }
 
-        private void CreatePizza(Pizza pizza)
+        public void CreatePizza(Pizza pizza)
         {
             using (var connection = new SqliteConnection(connectionString))
             {
