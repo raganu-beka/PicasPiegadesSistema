@@ -55,7 +55,8 @@ namespace PicasPiegadesSistema
                     buttons: MessageBoxButtons.OK,
                     icon: MessageBoxIcon.Exclamation);
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Notikusi kļūda! " + ex.Message);
             }
@@ -67,6 +68,20 @@ namespace PicasPiegadesSistema
             var pizzasDesc = pizzas.Select(x => x.Description).ToList();
 
             pizzaList.DataSource = pizzasDesc;
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            var selectedName = pizzaList.Text;
+            var pizzas = _pizzaDb.ReadPizzas();
+
+            var selectedPizza = pizzas.Find(x => x.Description == selectedName);
+            
+            if (selectedPizza != null)
+            {
+                _pizzaDb.DeletePizza(selectedPizza);
+                UpdatePizzaComboBox();
+            }
         }
     }
 }

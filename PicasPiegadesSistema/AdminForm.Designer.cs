@@ -124,6 +124,7 @@
             deleteBtn.TabIndex = 9;
             deleteBtn.Text = "Dzēst";
             deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // AdminForm
             // 
