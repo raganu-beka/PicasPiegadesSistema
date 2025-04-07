@@ -55,6 +55,12 @@ namespace PicasPiegadesSistema
                     AdminForm adminForm = new AdminForm();
                     adminForm.Show();
                 }
+                else
+                {
+                    this.Hide();
+                    MainForm mainForm = new MainForm();
+                    mainForm.Show();
+                }
 
                 MessageBox.Show("Logged in");
             }
