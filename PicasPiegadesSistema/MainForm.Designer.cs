@@ -30,10 +30,10 @@
         {
             selectBtn = new Button();
             pizzaList = new ComboBox();
-            basketGrid = new DataGridView();
+            cartGrid = new DataGridView();
             label1 = new Label();
             submitBtn = new Button();
-            ((System.ComponentModel.ISupportInitialize)basketGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cartGrid).BeginInit();
             SuspendLayout();
             // 
             // selectBtn
@@ -54,13 +54,13 @@
             pizzaList.Size = new Size(261, 23);
             pizzaList.TabIndex = 8;
             // 
-            // basketGrid
+            // cartGrid
             // 
-            basketGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            basketGrid.Location = new Point(12, 100);
-            basketGrid.Name = "basketGrid";
-            basketGrid.Size = new Size(342, 220);
-            basketGrid.TabIndex = 10;
+            cartGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            cartGrid.Location = new Point(12, 100);
+            cartGrid.Name = "cartGrid";
+            cartGrid.Size = new Size(342, 220);
+            cartGrid.TabIndex = 10;
             // 
             // label1
             // 
@@ -87,12 +87,12 @@
             ClientSize = new Size(391, 373);
             Controls.Add(submitBtn);
             Controls.Add(label1);
-            Controls.Add(basketGrid);
+            Controls.Add(cartGrid);
             Controls.Add(selectBtn);
             Controls.Add(pizzaList);
             Name = "MainForm";
             Text = "MainForm";
-            ((System.ComponentModel.ISupportInitialize)basketGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cartGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -104,5 +104,6 @@
         private DataGridView basketGrid;
         private Label label1;
         private Button submitBtn;
+        private DataGridView cartGrid;
     }
 }

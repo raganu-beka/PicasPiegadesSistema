@@ -39,16 +39,24 @@ namespace PicasPiegadesSistema
             }
         }
 
-        public void CreateOrder(Order order)
+        public void CreateOrder(int userId)
         {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
 
+                var createUserCommand = connection.CreateCommand();
+                createUserCommand.CommandText = @"
+                    INSERT INTO Orders(IsPaid, CreatedAt, OrderUser)
+                    VALUES (@isPaid, @createdAt, @orderUser)
+                ";
+
+                createUserCommand.Parameters.AddWithValue("isPaid", false);
+                createUserCommand.Parameters.AddWithValue("createdAt", DateTime.UtcNow.ToLongTimeString());
+                createUserCommand.Parameters.AddWithValue("orderUser", userId);
+
+                createUserCommand.ExecuteNonQuery();
+            }
         }
-    }
-
-    class Order
-    {
-        public bool IsPaid;
-        public string CreatedAt;
-        public int UserId;
     }
 }
