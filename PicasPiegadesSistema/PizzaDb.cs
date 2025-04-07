@@ -95,7 +95,7 @@ namespace PicasPiegadesSistema
                 connection.Open();
 
                 var deleteCmd = connection.CreateCommand();
-                deleteCmd.CommandText = @"DELETE FROM Pizza
+                deleteCmd.CommandText = @"DELETE FROM Pizzas
                     WHERE Description = @description";
 
                 deleteCmd.Parameters.AddWithValue("description", pizza.Description);
