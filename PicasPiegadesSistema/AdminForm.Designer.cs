@@ -95,6 +95,7 @@
             pizzaList.Name = "pizzaList";
             pizzaList.Size = new Size(261, 23);
             pizzaList.TabIndex = 6;
+            pizzaList.SelectedIndexChanged += pizzaList_SelectedIndexChanged;
             // 
             // selectBtn
             // 

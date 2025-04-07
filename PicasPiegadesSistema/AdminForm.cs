@@ -76,12 +76,17 @@ namespace PicasPiegadesSistema
             var pizzas = _pizzaDb.ReadPizzas();
 
             var selectedPizza = pizzas.Find(x => x.Description == selectedName);
-            
+
             if (selectedPizza != null)
             {
                 _pizzaDb.DeletePizza(selectedPizza);
                 UpdatePizzaComboBox();
             }
+        }
+
+        private void pizzaList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

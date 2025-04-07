@@ -44,6 +44,7 @@
             selectBtn.TabIndex = 9;
             selectBtn.Text = "Izvēlēties";
             selectBtn.UseVisualStyleBackColor = true;
+            selectBtn.Click += selectBtn_Click;
             // 
             // pizzaList
             // 
