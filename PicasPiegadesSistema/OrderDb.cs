@@ -60,8 +60,8 @@ namespace PicasPiegadesSistema
                 var getIdCommand = connection.CreateCommand();
                 getIdCommand.CommandText = "SELECT last_insert_rowid()";
 
-                int lastId = (Int32) getIdCommand.ExecuteScalar();
-                return lastId;
+                long lastId = (Int64) getIdCommand.ExecuteScalar();
+                return (int) lastId;
             }
         }
     }

@@ -79,6 +79,7 @@
             submitBtn.TabIndex = 12;
             submitBtn.Text = "Noformēt pasūtījumu";
             submitBtn.UseVisualStyleBackColor = true;
+            submitBtn.Click += submitBtn_Click;
             // 
             // MainForm
             // 

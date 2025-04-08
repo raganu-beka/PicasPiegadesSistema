@@ -13,6 +13,7 @@ namespace PicasPiegadesSistema
     public partial class MainForm : Form
     {
         private PizzaDb _pizzaDb;
+        private OrderDb _orderDb;
         private List<Pizza> _pizzaList = new List<Pizza>();
         private int _userId;
 
@@ -22,6 +23,7 @@ namespace PicasPiegadesSistema
 
             _userId = userId;
             _pizzaDb = new PizzaDb("Data Source=pizza.db");
+            _orderDb = new OrderDb("Data Source=pizza.db");
             UpdatePizzaComboBox();
             UpdatePizzaDataGrid();
         }
@@ -67,6 +69,12 @@ namespace PicasPiegadesSistema
             var pizzasDesc = pizzas.Select(x => x.Description).ToList();
 
             pizzaList.DataSource = pizzasDesc;
+        }
+
+        private void submitBtn_Click(object sender, EventArgs e)
+        {
+            var orderId = _orderDb.CreateOrder(_userId);
+            MessageBox.Show("Izveidots pasūtījums ar ID: " + orderId.ToString());
         }
     }
 }

@@ -68,7 +68,7 @@ namespace PicasPiegadesSistema
 
                 var selectUserCommand = connection.CreateCommand();
                 selectUserCommand.CommandText = @"
-                    SELECT Username, Password, IsAdmin FROM Users
+                    SELECT Id, Username, Password, IsAdmin FROM Users
                     WHERE Username = @username
                 ";
                 selectUserCommand.Parameters.AddWithValue("username", username);
