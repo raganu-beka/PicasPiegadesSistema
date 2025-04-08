@@ -14,11 +14,13 @@ namespace PicasPiegadesSistema
     {
         private PizzaDb _pizzaDb;
         private List<Pizza> _pizzaList = new List<Pizza>();
+        private int _userId;
 
-        public MainForm()
+        public MainForm(int userId)
         {
             InitializeComponent();
 
+            _userId = userId;
             _pizzaDb = new PizzaDb("Data Source=pizza.db");
             UpdatePizzaComboBox();
             UpdatePizzaDataGrid();

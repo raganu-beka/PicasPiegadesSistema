@@ -60,7 +60,7 @@ namespace PicasPiegadesSistema
             }
         }
 
-        public (string, string, bool) GetUser(string username)
+        public (int, string, string, bool) GetUser(string username)
         {
             using (var connection = new SqliteConnection(connectionString))
             {
@@ -77,7 +77,10 @@ namespace PicasPiegadesSistema
                 {
                     while (reader.Read())
                     {
-                        return (reader["Username"].ToString(), reader["Password"].ToString(), Convert.ToBoolean(reader["IsAdmin"]));
+                        return (Convert.ToInt32(reader["Id"]),
+                            reader["Username"].ToString(),
+                            reader["Password"].ToString(),
+                            Convert.ToBoolean(reader["IsAdmin"]));
                     }
                 }
 

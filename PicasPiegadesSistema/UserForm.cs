@@ -36,7 +36,7 @@ namespace PicasPiegadesSistema
             var username = unameTxt.Text;
             var password = passTxt.Text;
 
-            (string username, string password, bool isAdmin) user;
+            (int id, string username, string password, bool isAdmin) user;
             try
             {
                 user = _userDb.GetUser(username);
@@ -58,7 +58,7 @@ namespace PicasPiegadesSistema
                 else
                 {
                     this.Hide();
-                    MainForm mainForm = new MainForm();
+                    MainForm mainForm = new MainForm(user.id);
                     mainForm.Show();
                 }
 
