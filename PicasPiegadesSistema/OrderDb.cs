@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace PicasPiegadesSistema
             this.connectionString = connectionString;
 
             CreateOrderTable();
+            CreateOrderPizzaTable();
         }
 
         private void CreateOrderTable()
@@ -36,6 +38,50 @@ namespace PicasPiegadesSistema
                 ";
 
                 createTableCommand.ExecuteNonQuery();
+            }
+        }
+
+        private void CreateOrderPizzaTable()
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                var createTableCommand = connection.CreateCommand();
+                createTableCommand.CommandText = @"
+                    CREATE TABLE IF NOT EXISTS OrderPizza (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        OrderId INTEGER REQUIRED,
+                        PizzaId INTEGER REQUIRED,
+                        FOREIGN KEY (OrderId) REFERENCES Orders(Id),
+                        FOREIGN KEY (PizzaId) REFERENCES Pizzas(Id)
+                    ) 
+                ";
+
+                createTableCommand.ExecuteNonQuery();
+            }
+        }
+
+        public void AddPizzasToOrder(int orderId, List<Pizza> pizzas)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                StringBuilder sb = new StringBuilder("INSERT INTO OrderPizza (OrderId, PizzaId) VALUES ");
+                List<string> values = new List<string>();
+
+                foreach (var pizza in pizzas)
+                {
+                    values.Add($"({orderId}, {pizza.Id})");
+                }
+
+                sb.Append(string.Join(", ", values));
+
+                connection.Open();
+
+                var createUserCommand = connection.CreateCommand();
+                createUserCommand.CommandText = sb.ToString();
+
+                createUserCommand.ExecuteNonQuery();
             }
         }
 
