@@ -8,6 +8,7 @@ namespace PicasPiegadesSistema
 {
     class Pizza
     {
+        public int Id;
         public string? Description;
         public int Size;
         public double Price;

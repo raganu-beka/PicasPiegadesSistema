@@ -76,6 +76,7 @@ namespace PicasPiegadesSistema
                     {
                         var pizza = new Pizza()
                         {
+                            Id = Convert.ToInt32(reader["Id"]),
                             Description = reader["Description"].ToString(),
                             Price = Convert.ToDouble(reader["Price"]),
                             Size = Convert.ToInt32(reader["Size"])
