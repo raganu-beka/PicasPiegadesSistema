@@ -110,5 +110,27 @@ namespace PicasPiegadesSistema
                 return (int) lastId;
             }
         }
+
+        public double GetOrderTotalPrice(int orderId)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                var createUserCommand = connection.CreateCommand();
+                createUserCommand.CommandText = @"
+                    SELECT SUM(P.Price)
+                    FROM Orders O
+                    JOIN OrderPizza OP ON O.Id = OP.OrderId
+                    JOIN Pizzas P ON OP.PizzaId = P.Id
+                    WHERE O.Id = @orderId
+                ";
+
+                createUserCommand.Parameters.AddWithValue("orderId", orderId);
+
+                var price = Convert.ToDecimal(createUserCommand.ExecuteScalar());
+                return (double) price;
+            }
+        }
     }
 }

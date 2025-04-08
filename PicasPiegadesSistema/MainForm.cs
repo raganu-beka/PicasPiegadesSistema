@@ -75,8 +75,9 @@ namespace PicasPiegadesSistema
         {
             var orderId = _orderDb.CreateOrder(_userId);
             _orderDb.AddPizzasToOrder(orderId, _pizzaList);
+            var orderPrice = _orderDb.GetOrderTotalPrice(orderId);
 
-            MessageBox.Show("Izveidots pasūtījums ar ID: " + orderId.ToString());
+            MessageBox.Show("Izveidots pasūtījums ar cenu: " + orderPrice);
         }
     }
 }
