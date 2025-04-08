@@ -39,7 +39,7 @@ namespace PicasPiegadesSistema
             }
         }
 
-        public void CreateOrder(int userId)
+        public int CreateOrder(int userId)
         {
             using (var connection = new SqliteConnection(connectionString))
             {
@@ -56,6 +56,12 @@ namespace PicasPiegadesSistema
                 createUserCommand.Parameters.AddWithValue("orderUser", userId);
 
                 createUserCommand.ExecuteNonQuery();
+
+                var getIdCommand = connection.CreateCommand();
+                getIdCommand.CommandText = "SELECT last_insert_rowid()";
+
+                int lastId = (Int32) getIdCommand.ExecuteScalar();
+                return lastId;
             }
         }
     }
